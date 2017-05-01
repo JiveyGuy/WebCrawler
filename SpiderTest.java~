@@ -1,0 +1,23 @@
+package prog3.crawler;
+import java.util.Scanner;
+public class SpiderTest
+{
+  private static boolean debug = false;
+  public static void main(String[] arguments)
+  {
+    if ( arguments.length > 0 && arguments[0].toUpperCase().startsWith("-D") ) debug = ! debug;
+    System.out.println ( "Debug is " + ( debug ? "" : "not " ) + "enabled" );
+   
+    String userInput;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("insert the word"); 
+    userInput = sc.nextLine();
+    sc.close();
+    Spider spider = new Spider();
+    spider.search("https://https://en.wikipedia.org/wiki/Main_Page", userInput,debug);
+    if(spider.getWebCrawlerOutput().trim().length()!=0)
+    {
+      System.out.print("WebPages where you can find the word " +userInput+":\n"+spider.getWebCrawlerOutput());
+    }
+  }
+}
